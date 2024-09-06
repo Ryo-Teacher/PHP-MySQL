@@ -1,0 +1,1925 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>ともすた</title>
+	<atom:link href="https://tomosta.jp/feed/" rel="self" type="application/rss+xml" />
+	<link>https://tomosta.jp</link>
+	<description>プログラミング学習コミュニティ</description>
+	<lastBuildDate>Fri, 17 May 2024 07:40:32 +0000</lastBuildDate>
+	<language>ja</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.6.1</generator>
+
+<image>
+	<url>https://tomosta.jp/wp-content/uploads/2021/12/manabee_512-150x150.png</url>
+	<title>ともすた</title>
+	<link>https://tomosta.jp</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+	<item>
+		<title>Astro DBでデータをページに表示しよう</title>
+		<link>https://tomosta.jp/2024/04/astro-db-view/</link>
+					<comments>https://tomosta.jp/2024/04/astro-db-view/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Mon, 01 Apr 2024 16:43:07 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<category><![CDATA[Astro]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24418</guid>
+
+					<description><![CDATA[Astro DBは、Astroが公式で提供するデータベースサービスです。これを利用すると、簡易的なCMSとして利用したり、お問い合わせフォームの内容を一時的に保管しておく場所として利用するなど、情報を記録したり取り出した [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe title="Astro DBでデータをページに表示しよう" width="500" height="281" src="https://www.youtube.com/embed/U-IPNQ14A7U?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><a href="https://astro.build/db/" target="_blank" rel="noreferrer noopener">Astro DB</a>は、<a href="https://astro.build/">Astro</a>が公式で提供するデータベースサービスです。これを利用すると、簡易的なCMSとして利用したり、お問い合わせフォームの内容を一時的に保管しておく場所として利用するなど、情報を記録したり取り出したりなどの用途で広く利用できます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-1024x576.png" alt="" class="wp-image-24422" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>早速使ってみましょう。</p>
+
+
+
+<h2 class="wp-block-heading">Astro Studioを利用しよう</h2>
+
+
+
+<p>Astro DBは<a href="https://studio.astro.build/" target="_blank" rel="noreferrer noopener">Astro Studio</a>というサービス内で提供されているため、まずはAstro Studioのアカウントを準備する必要があります。そして、Astro StudioのアカウントはGitHubアカウントを利用するため、まずはGitHubアカウントを準備しましょう。</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-wp-oembed-blog-card wp-block-embed-wp-oembed-blog-card"><div class="wp-block-embed__wrapper">
+https://github.com/
+</div></figure>
+
+
+
+<p>そしたら、Astro Studioにサインインします。</p>
+
+
+
+<figure class="wp-block-embed is-type-rich is-provider-wp-oembed-blog-card wp-block-embed-wp-oembed-blog-card"><div class="wp-block-embed__wrapper">
+https://studio.astro.build/
+</div></figure>
+
+
+
+<p>ログインすると、図のような「プロジェクト」画面が表示されます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-1-1024x576.png" alt="" class="wp-image-24423" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-1-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-1-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-1-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-1-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-1.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">プロジェクトを作成しよう</h2>
+
+
+
+<p>続いて、プロジェクトを作成します。プロジェクトを作成すると、データベーススペースが準備されます。</p>
+
+
+
+<p>右上の「+」ボタンをクリックしましょう。選択肢が表示されるので、ここでは一番下の「Create Empty Project」をクリックして空のプロジェクトを作成します。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-2-1024x576.png" alt="" class="wp-image-24424" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-2-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-2-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-2-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-2-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-2.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>なお、他の選択肢は次の通りです。</p>
+
+
+
+<ul class="wp-block-list">
+<li>Import from GitHub repo… 既存のプロジェクトをGitHubからインポートします</li>
+
+
+
+<li>Create from Template… テンプレートから選択します。2024年現在ではJob Boardと、Wait Listというテンプレートが準備されています</li>
+
+
+
+<li>Create from CLI… コマンドラインを使って作成できます</li>
+
+
+
+<li>Create Empty Project… 新しいプロジェクトを作成します</li>
+</ul>
+
+
+
+<p>続いて、作成するGitHubのリポジトリ名を入力します。新しく作成されるので、既存のリポジトリ名と重ならない名前にしましょう。その他、次のような設定をします。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-3-1024x576.png" alt="" class="wp-image-24425" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-3-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-3-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-3-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-3-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-3.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<ul class="wp-block-list">
+<li>Repo Visibility… リポジトリをプライベートに設定します。基本的にはチェックをつけたままにしましょう。誰でも見られるリポジトリになってしまいます。</li>
+
+
+
+<li>Region… データベースの配置場所を選びます。「Asia（Japan）」を選ぶと、日本国内のサーバーに配置されます。</li>
+</ul>
+
+
+
+<p>こうしてプロジェクトを作成しましょう。完成すると、図のような画面が表示されます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-4-1024x576.png" alt="" class="wp-image-24426" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-4-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-4-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-4-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-4-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-4.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">リポジトリをクローンしよう</h2>
+
+
+
+<p>プロジェクトが作られると、指定されたGitHubリポジトリに必要なファイル群が配置されます。これをクローンしましょう。GitHub Desktopをセットアップしていたら、「Open with GitHub Desktop」でクローンすると良いでしょう。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-5-1024x576.png" alt="" class="wp-image-24427" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-5-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-5-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-5-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-5-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-5.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>これを、VSCodeで開きましょう。</p>
+
+
+
+<h2 class="wp-block-heading">依存ファイルをインストールして起動しよう</h2>
+
+
+
+<p>クローンしたプロジェクトには、Node.jsの依存ファイル群が含まれていないので、これをインストールしましょう。VSCodeのターミナルを起動して、次のように入力します。</p>
+
+
+
+<pre class="wp-block-code"><code>npm install</code></pre>
+
+
+
+<p>依存ファイルがインストールできたら、ローカルサーバーを起動しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>npm run dev</code></pre>
+
+
+
+<p>これで、Astroのプロジェクトが起動しました。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-6-1024x576.png" alt="" class="wp-image-24428" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-6-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-6-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-6-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-6-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-6.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">データベースを定義しよう</h2>
+
+
+
+<p>Astro Studioで作成したプロジェクトには、あらかじめ「db」というフォルダが作られていて、ファイルが生成されています。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-7-1024x576.png" alt="" class="wp-image-24429" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-7-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-7-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-7-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-7-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-7.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>なお、既存のAstroのプロジェクトに後からAstro DBを追加したい場合は、次のコマンドを入力します。</p>
+
+
+
+<pre class="wp-block-code"><code>npx astro add db</code></pre>
+
+
+
+<p>そしたら、「db/config.ts」ファイルを開きましょう。ここで、データベースのテーブルを定義します。</p>
+
+
+
+<p>データベースは「カラム」という、Excelの「列」のようなものをあらかじめ準備する必要があります。このカラムに対してデータを格納していくイメージになります。</p>
+
+
+
+<p>ここでは、簡易的なコメント欄を作成する事を想定し、タイトルと内容を格納するカラムを準備しましょう。次のように書き加えます。</p>
+
+
+
+<pre class="wp-block-code"><code>import { defineDb, defineTable, column } from "astro:db";
+
+const Comment = defineTable({
+  columns: {
+    title: column.text(),
+    body: column.text(),
+  },
+});
+
+// &lt;https://astro.build/db/config>
+export default defineDb({
+  tables: { Comment },
+});
+</code></pre>
+
+
+
+<p>それぞれ解説しましょう。</p>
+
+
+
+<p>まずは、データベースの定義に必要なモジュールをインポートします。</p>
+
+
+
+<pre class="wp-block-code"><code>import { defineDb, defineTable, column } from "astro:db";</code></pre>
+
+
+
+<p>ここでは、「defineDb」「defineTable」「column」をインポートしました。</p>
+
+
+
+<p>そして、「Comment」という名前のテーブルを定義します。</p>
+
+
+
+<pre class="wp-block-code"><code>const Comment = defineTable({
+  columns: {
+    title: column.text(),
+    body: column.text(),
+  },
+});
+</code></pre>
+
+
+
+<p>このテーブルには、titleとbodyというカラムを準備しています。カラムには、「データ型」を指定する必要があるので、ここではテキスト（column.text()）が指定できるようにしています。データ型には、次のものが指定できます。</p>
+
+
+
+<ul class="wp-block-list">
+<li>column.text()… テキスト</li>
+
+
+
+<li>column.number()… 数字</li>
+
+
+
+<li>column.boolean()… ブーリアン（trueまたはfalse）</li>
+
+
+
+<li>column.date()… 日付</li>
+
+
+
+<li>column.json()… JSONデータ</li>
+</ul>
+
+
+
+<p>データ型の指定のカッコの中にはオプションを指定できます。</p>
+
+
+
+<p>最後に、ここで作成したテーブルをAstro DBに登録します。</p>
+
+
+
+<pre class="wp-block-code"><code>export default defineDb({
+  tables: { Comment },
+});</code></pre>
+
+
+
+<p>これで準備完了です。</p>
+
+
+
+<h2 class="wp-block-heading">シードデータを作成しよう</h2>
+
+
+
+<p>ここで準備したデータベースには、データを挿入することができるのですが、開発中に毎回データを入れていくのは大変です。そこで、「シーズデータ」というシード（Seed:種）のデータをあらかじめ準備しておき、プログラムを動作させる度に、それらのデータが準備されていると開発が楽になります。</p>
+
+
+
+<p>「db/seed.ts」というファイルがあらかじめ準備されているため、ここに次のように追記しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>import { db, News } from "astro:db";
+
+export default async function seed() {
+  // Seed local development data.
+  // See &lt;https://docs.astro.build/en/guides/astro-db/#seed-your-database>
+  await db.insert(News).values(&#91;
+    { id: 1, title: "こんにちは", body: "拝見しました" },
+    { id: 2, title: "初めまして", body: "よろしくお願いします" },
+  ]);
+}
+</code></pre>
+
+
+
+<p>JSON形式でデータを準備していきます。これで、テーブルにはあらかじめデータが準備された状態で開発を始めることができる用になります。</p>
+
+
+
+<h2 class="wp-block-heading">Astro DBの内容を画面に表示しよう</h2>
+
+
+
+<p>それではいよいよ、このデータベースを使ってコメントの一覧ページを作成してみましょう。ここでは、あらかじめ準備されている「src/pages/index.astro」を変更していきましょう。</p>
+
+
+
+<p>まずはファイルの先頭に、データを取得するための処理を記述します。</p>
+
+
+
+<pre class="wp-block-code"><code>---
+import { db, Comment } from "astro:db";
+const comments = await db.select().from(Comment);
+---
+...
+</code></pre>
+
+
+
+<p>これでニュースが取得されます。後は、JSONデータの配列データなので、これを繰り返しで処理していけば、一覧画面を作成することができます。</p>
+
+
+
+<pre class="wp-block-code"><code>{comments.map(({ title, body }) => (
+&lt;article>
+  &lt;h2>{title}&lt;/h2>
+  &lt;p>{body}&lt;/p>
+&lt;/article>
+))}
+</code></pre>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-8-1024x576.png" alt="" class="wp-image-24434" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-8-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-8-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-8-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-8-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-8.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>このあたりのプログラムの解説は省略するため、必要な場合はAstroの基本をご確認ください。</p>
+
+
+
+<h2 class="wp-block-heading">Cloudflare Pagesで公開しよう</h2>
+
+
+
+<p>これで、ひとまずWebサイトが完成したとして、これをネットに公開しましょう。公開するには、サーバーが必要となりますが、ここでは<a href="https://pages.cloudflare.com/" target="_blank" rel="noreferrer noopener">Cloudflare Pages</a>を利用して公開していきます。</p>
+
+
+
+<p>Cloudflareのアカウントを作成したら、「Workers &amp; Pages」で「Pages」タブをクリックして、「Gitに接続」ボタンをクリックしましょう。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-9-1024x576.png" alt="" class="wp-image-24435" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-9-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-9-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-9-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-9-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-9.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>GitHubアカウントで連携して、先ほどAstro Studioで作成したリポジトリを選択します。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-10-1024x576.png" alt="" class="wp-image-24436" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-10-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-10-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-10-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-10-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-10.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>プロジェクト名やプロダクションブランチはそのままにして、「ビルドの設定」の「フレームワークプリセット」で「Astro」を選択します。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-11-1024x576.png" alt="" class="wp-image-24437" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-11-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-11-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-11-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-11-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-11.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>これで準備完了です。</p>
+
+
+
+<h2 class="wp-block-heading">Astro DBとCloudflareを接続しよう</h2>
+
+
+
+<p>続いて、Astro DBとCloudflareを接続します。これには、Appトークンと呼ばれるキーコードを利用します。</p>
+
+
+
+<p>Astro Studioにログインしたら、プロジェクトの「Generate App Token（Appトークンを作成する）」をクリックします。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-12-1024x576.png" alt="" class="wp-image-24438" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-12-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-12-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-12-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-12-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-12.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>トークン名には見分けがつくような「Cloudflare」などを入力して「Generate」ボタンをクリックすると、トークン文字列が発行されるので、これをコピーしておきましょう。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-14-1024x576.png" alt="" class="wp-image-24440" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-14-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-14-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-14-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-14-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-14.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>次に、Cloudflare Pagesで「設定」タブの「環境変数」でプロダクションの「変数を追加する」ボタンをクリックしましょう。</p>
+
+
+
+<p>変数名に「ASTRO_STUDIO_APP_TOKEN」と入力し、値に今コピーしたトークンを貼り付けます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-15-1024x576.png" alt="" class="wp-image-24441" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-15-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-15-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-15-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-15-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-15.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>保存しておきましょう。</p>
+
+
+
+<h2 class="wp-block-heading">リモートのDBと接続しよう</h2>
+
+
+
+<p>続いて、Astroの設定ファイルでDBをリモートのDBに設定します。これにより、Astro Studio内のDBが利用されるようになります。</p>
+
+
+
+<p>package.jsonファイルを開いたら、8行目付近の記述を次のように変更しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>"build": "astro build",
+↓
+"build": "astro buid<strong> --remote</strong>",</code></pre>
+
+
+
+<p>これですべての準備が整いました。GitHubに最新ファイルをプッシュすれば、Cloudflare Pagesでビルドが始まります。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-16-1024x576.png" alt="" class="wp-image-24442" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-16-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-16-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-16-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-16-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-16.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">データベースを更新しよう</h2>
+
+
+
+<p>それではここに、新しいデータを投入してみましょう。Astro Studioでプロジェクトを選択したら「1 Tables」と書かれたエリアをクリックします。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-17-1024x576.png" alt="" class="wp-image-24443" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-17-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-17-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-17-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-17-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-17.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>すると、データベースの管理画面が表示されます。ここで、新しいデータを投入してみましょう。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-18-1024x576.png" alt="" class="wp-image-24444" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-18-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-18-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-18-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-18-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-18.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>画面を更新するには再ビルドが必要になるので、Cloudflare Pagesでビルド一覧を表示したら、一番右側のメニューボタンから「デプロイを再試行」をクリックします。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-19-1024x576.png" alt="" class="wp-image-24445" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-19-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-19-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-19-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-19-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-19.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>ビルドが正常に終わったら、発行されたURLにアクセスしてみましょう。データベースに挿入した内容が反映されます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/04/image-20-1024x576.png" alt="" class="wp-image-24446" srcset="https://tomosta.jp/wp-content/uploads/2024/04/image-20-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/04/image-20-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/04/image-20-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/04/image-20-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/04/image-20.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>こうして、手軽にデータベースと連携できるので、Astroをますます便利に利用していきましょう。</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://astro.build/" target="_blank" rel="noreferrer noopener">Astro</a></li>
+
+
+
+<li><a href="https://astro.build/db/" target="_blank" rel="noreferrer noopener">Astro DB</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/04/astro-db-view/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>TypeScriptの「型」とはなにか</title>
+		<link>https://tomosta.jp/2024/03/typescript_type/</link>
+					<comments>https://tomosta.jp/2024/03/typescript_type/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Mon, 11 Mar 2024 10:38:21 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<category><![CDATA[TypeScript]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24353</guid>
+
+					<description><![CDATA[TypeScriptは、JavaScriptをベースにさまざまな機能を追加したプログラミング言語ですが、中でも特徴的なのは、名前にもある「型（Type）」という特徴です。 例えばJavaScriptの次のプログラムを見て [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="TypeScriptの「型」とはなにか" width="500" height="281" src="https://www.youtube.com/embed/KMOPrW3uRPY?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p><a href="https://www.youtube.com/@tomosta"></a></p>
+
+
+
+<p>TypeScriptは、JavaScriptをベースにさまざまな機能を追加したプログラミング言語ですが、中でも特徴的なのは、名前にもある「型（Type）」という特徴です。</p>
+
+
+
+<p>例えばJavaScriptの次のプログラムを見てみましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>let sum = 1 + 2;
+console.log(sum); // 3
+</code></pre>
+
+
+
+<p>これをTypeScriptにした場合は、次のように「型」を宣言しなければなりません。</p>
+
+
+
+<pre class="wp-block-code"><code>let sum<strong>: number</strong> = 1 + 2;
+console.log(sum); // 3
+</code></pre>
+
+
+
+<p>なぜ、このような「型」を宣言しなければならないのでしょうか？　どんなメリットがあるのでしょうか？　ここでは、そんな「型」について紹介していきましょう。</p>
+
+
+
+<h2 class="wp-block-heading">型のメリット</h2>
+
+
+
+<p>まずは「型」があると、どんな良いことがあるのでしょう。次のJavaScriptのプログラムを見てみましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>let price;
+price = 1000;
+console.log(price * 1.1); // 1100
+</code></pre>
+
+
+
+<p>1000に1.1をかけ算した結果を表示しています。しかし、例えば開発をしている途中で、次のようなおかしな値を代入してしまったとしましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>let price;
+price = 1000;
+// ...
+price = 'abc';
+console.log(price * 1.1); // NaN
+</code></pre>
+
+
+
+<p>「abc」という「文字列」を代入してしまったため、計算ができなくなってしまい、結果は「NaN（Not a Number）」というエラーになってしまいました。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-23-1024x576.png" alt="" class="wp-image-24355" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-23-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-23-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-23-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-23-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-23.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>エラーになればまだ良いのですが、次のようなケースはもっとやっかいです。</p>
+
+
+
+<pre class="wp-block-code"><code>let price, price2;
+price = 1000;
+price2 = '100';
+price = price + price2; // 1000100になる
+console.log(price * 1.1); // 1100110
+</code></pre>
+
+
+
+<p>priceとprice2を足して合計を出そうとしたら、うっかりprice2が文字列であったために文字列連結となって、さらにこれが計算の時には数字に変わってしまうため、結果は1100110という全く違う計算結果が出てきてしまいます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-24-1024x576.png" alt="" class="wp-image-24356" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-24-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-24-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-24-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-24-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-24.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>このバグは非常に見つけにくく、この誤った計算結果を基に処理を続けようとしてしまうため、決済処理などの場合には非常に危険です。</p>
+
+
+
+<p>JavaScriptは、このような柔軟性の代わりに非常に危うい言語設計になっています。</p>
+
+
+
+<p>TypeScriptで型を宣言した場合、これらのプログラムはすべてエラーとなってコンパイルができません。</p>
+
+
+
+<pre class="wp-block-code"><code>let price: number, price2: number;
+price = 1000;
+price2 = '100';
+price = price + price2; // 1000100になる
+console.log(price * 1.1); // 1100110
+</code></pre>
+
+
+
+<p>price2のところで「型 &#8216;string&#8217; を型 &#8216;number&#8217; に割り当てることはできません。」とエラーになりますし、price2をstringにした場合も足し算ができなくなります。こうして、プログラムの間違いを開発中に気がつくことができます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-25-1024x576.png" alt="" class="wp-image-24358" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-25-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-25-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-25-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-25-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-25.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">静的型付けと動的型付け</h2>
+
+
+
+<p>なお、正確なことをいえばJavaScriptに変数の「型」がないわけではありません。プログラミング言語には、基本的には必ず「型」があります。ただし、JavaScriptは「動的型付け」というしくみで動作していて、変数の型が「その場で」決まります。</p>
+
+
+
+<p>それに対して、TypeScriptでは「静的型付け」というあらかじめ型を宣言してから利用する方式に変更しています。</p>
+
+
+
+<p>動的型付けの場合、非常に手軽にプログラムを作成することができます。あらかじめどんな値が入るのかを想定する必要もないですし、変数を自由に再利用することができます。しかし、大規模なプログラム開発だったり、チーム開発をすると、変数がいろいろな使われ方をされてしまっていると、どんな動きをするのかの見通しが悪くなったりして、見にくいプログラムになったり、バグが発生する原因になったりします。</p>
+
+
+
+<p>そこで、TypeScriptでは静的型付けの概念を取り入れ、これらの問題を解消したというわけです。</p>
+
+
+
+<h2 class="wp-block-heading">型の変換</h2>
+
+
+
+<p>TypeScriptでも先のプログラムを正しく動作させることができます。それが「型変換」という手法です。次のように変更してみましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>let price: number = 1000;
+let price2: number = <strong>Number</strong>('100');
+price = price + price2;
+console.log(price * 1.1);
+</code></pre>
+
+
+
+<p>文字列を代入するときに「Number()」で囲みます。これで、型が変換されてnumberとして処理されます。</p>
+
+
+
+<h2 class="wp-block-heading">型推論</h2>
+
+
+
+<p>TypeScriptは、型を常に宣言しなければならずに面倒と感じるかも知れませんが、実は型の宣言は省略できる場合があります。それは、変数を宣言するときに同時に代入した場合。次の例を見てみましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>let price = 1000;
+let price2 = '100';
+price = price + price2;
+console.log(price * 1.1);
+</code></pre>
+
+
+
+<p>この場合、特に型は宣言していませんが、エラーが表示されます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-26-1024x576.png" alt="" class="wp-image-24360" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-26-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-26-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-26-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-26-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-26.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>これは、TypeScriptが自動的に最初に代入された値の内容から型を「推論」しているため。実際、VSCodeで変数名にマウスカーソルを重ねると、正しい型が表示されています。</p>
+
+
+
+<p>そのため、直接代入する変数などの場合には型の定義を省略することができるのです。</p>
+
+
+
+<h2 class="wp-block-heading">危険なany型</h2>
+
+
+
+<p>ではTypeScriptでは、一度型を決めた変数は、後から別のものを代入することはできないのでしょうか？　一応、やり方がいくつか準備されています。</p>
+
+
+
+<p>まずは、型の定義を複数指定することができます。「|」で区切って指定します。</p>
+
+
+
+<pre class="wp-block-code"><code>let age: <strong>number | string</strong>;
+age = 25;
+age = '25歳';
+console.log(age);
+</code></pre>
+
+
+
+<p>この場合、「age」という変数には数字と文字列を代入することができるようになります。また、「なんでも入れられる」という「any」という型もあります。</p>
+
+
+
+<pre class="wp-block-code"><code>let age: <strong>any</strong>;
+age = 25;
+age = '25歳';
+console.log(age);
+</code></pre>
+
+
+
+<p>なお、実は代入をしない変数宣言時に型を指定しなかった場合は、「any」になります。</p>
+
+
+
+<pre class="wp-block-code"><code><strong>let age;</strong>
+age = 25;
+age = '25歳';
+console.log(age);
+</code></pre>
+
+
+
+<p>こうすれば、従来通りのJavaScriptと同じようにプログラムを作ることもできます。</p>
+
+
+
+<p>とはいえ、これは主に過去に開発したJavaScriptのプログラムを移植する際に、正しく行こうができないときのために準備されている手段であり、「any」を多用したプログラム開発はTypeScriptのメリットがなくなってしまうので、あまり良い方法とは言えません。</p>
+
+
+
+<p>できればやはり、きちんと型を考えてプログラムを開発した方が良いでしょう。</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.udemy.com/course/chanto-ts/?referralCode=B656FF5B1ED5E85FF840" target="_blank" rel="noreferrer noopener">ちゃんと学ぶ、TypeScript（Udemy）</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/03/typescript_type/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>kintoneがWebエンジニアにおすすめな理由</title>
+		<link>https://tomosta.jp/2024/03/kintone_for_webengineer/</link>
+					<comments>https://tomosta.jp/2024/03/kintone_for_webengineer/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Tue, 05 Mar 2024 07:16:56 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24345</guid>
+
+					<description><![CDATA[kintone（キントーン）は、サイボウズ社が運営する「業務アプリ制作のノーコードツール」とされています。 こう聞くと、エンジニアにとってはあまり縁のなさそうなツールに感じますが、これはサイボウズ社がターゲット層に向けて [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="Webエンジニアにkintoneがおすすめな理由" width="500" height="281" src="https://www.youtube.com/embed/mfGm8xabrRo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>kintone（キントーン）は、サイボウズ社が運営する「業務アプリ制作のノーコードツール」とされています。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-17-1024x576.png" alt="" class="wp-image-24346" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-17-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-17-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-17-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-17-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-17.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>こう聞くと、エンジニアにとってはあまり縁のなさそうなツールに感じますが、これはサイボウズ社がターゲット層に向けて、あえて分かりやすいメッセージにしているだけで、実際の所はkintoneというのはMySQLにWebインタフェースやAPIを備えたWebデータベースです。</p>
+
+
+
+<p>こう聞けば、急にWebエンジニアにも身近な存在になるのではないでしょうか。そこでこの記事では、そんなkintoneをエンジニア目線からそのメリット実際の使い方などをご紹介していきましょう。</p>
+
+
+
+<h2 class="wp-block-heading">kintoneをデータベースに利用するメリット</h2>
+
+
+
+<p>kintoneをWebデータベースとして利用する大きなメリットは、セキュリティです。kintoneは、サイボウズが運営するクラウド基盤上で運用されています。ここには、多くの日本の中小企業が利用している「サイボウズoffice」なども同居しているクラウドサーバーであり、セキュリティには細心の注意が払われています。</p>
+
+
+
+<p>ISMAPやISMS等の第三者認証も取得されており、信頼してデータを預けることができます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-18-1024x576.png" alt="" class="wp-image-24347" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-18-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-18-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-18-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-18-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-18.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">管理画面が不要</h2>
+
+
+
+<p>kintoneには管理画面が標準で装備されています。テーブル（アプリと呼びます）の設計から、レコードの管理、集計等を管理画面上からノーコードで利用することができます。</p>
+
+
+
+<p>これにより、管理画面などを別途準備する必要がありません。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-19-1024x576.png" alt="" class="wp-image-24348" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-19-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-19-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-19-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-19-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-19.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">APIで開発が可能</h2>
+
+
+
+<p>kintoneでは、REST APIを利用したAPIが提供されています。データの取得はもちろん、新規レコードの追加やレコードの変更・削除など、ほぼすべての操作をAPIを通じて行うことができ、フロントエンドプログラムのバックボーンとして利用が可能です。</p>
+
+
+
+<p>このように、kintoneはフロントエンド開発に役立つのはもちろん、サーバーサイドのエンジニアとしては、セキュアなデータベースを手軽に利用することができます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-20-1024x576.png" alt="" class="wp-image-24349" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-20-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-20-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-20-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-20-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-20.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>そこで、kintoneを次のような用途で利用することができます。</p>
+
+
+
+<h2 class="wp-block-heading">お問い合わせデータベースとして</h2>
+
+
+
+<p>フォームから入力された個人情報を、安全に保管するためのデータベースとして利用できます。</p>
+
+
+
+<p>APIを「登録のみ」解放すれば、APIがハッキングされたとしてもデータを抜き出すことができません。挿入された問い合わせデータはkintoneに実際にログインをして確認すれば良いことになります。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-21-1024x576.png" alt="" class="wp-image-24350" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-21-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-21-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-21-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-21-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-21.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">ヘッドレスCMSとして</h2>
+
+
+
+<p>見出しや本文など、CMSとしてフィールドを設計すれば、ヘッドレスCMSとしてフロントエンドのフレームワークなどと連携することができます。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-22-1024x576.png" alt="" class="wp-image-24351" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-22-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-22-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-22-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-22-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-22.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<h2 class="wp-block-heading">Webサイト上のデータベースとして</h2>
+
+
+
+<p>Webサイト上に、何かのデータをリストアップしたい場合や、大量のデータを提示したい場合なども、kintone上のデータを使ってWebページを構築すれば、更新も簡単になります。</p>
+
+
+
+<p>このように、kintoneを利用するには多くのメリットがあります。</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://kintone.cybozu.co.jp/" target="_blank" rel="noreferrer noopener">kintone</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/03/kintone_for_webengineer/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>新刊『Webエンジニアを育てる学校』が発売されました</title>
+		<link>https://tomosta.jp/2024/03/web_engineer_book/</link>
+					<comments>https://tomosta.jp/2024/03/web_engineer_book/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Sat, 02 Mar 2024 12:35:21 +0000</pubDate>
+				<category><![CDATA[お知らせ]]></category>
+		<category><![CDATA[書籍]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24333</guid>
+
+					<description><![CDATA[この度、たにぐち まことの新刊『Webエンジニアを育てる学校』が発売されました。 本書は近年、Web制作の学習において、必要となる前提知識の幅が非常に広いことから、これを網羅的に学べる書籍として執筆しました。 特に、We [&#8230;]]]></description>
+										<content:encoded><![CDATA[<div class="wp-block-image">
+<figure class="aligncenter size-full"><img loading="lazy" decoding="async" width="570" height="200" src="https://tomosta.jp/wp-content/uploads/2024/03/web-engineer-school-1.png" alt="" class="wp-image-24334" srcset="https://tomosta.jp/wp-content/uploads/2024/03/web-engineer-school-1.png 570w, https://tomosta.jp/wp-content/uploads/2024/03/web-engineer-school-1-300x105.png 300w" sizes="(max-width: 570px) 100vw, 570px" /></figure></div>
+
+
+<p>この度、たにぐち まことの新刊『Webエンジニアを育てる学校』が発売されました。</p>
+
+
+
+<p>本書は近年、Web制作の学習において、必要となる前提知識の幅が非常に広いことから、これを網羅的に学べる書籍として執筆しました。</p>
+
+
+
+<p>特に、Webの学習をするに当たって登場する、膨大な数の「用語」について、1つ1つ丁寧に解説しました。仕事的な話から、フロントエンド、サーバーサイド、セキュリティや法律まで、書籍と特典PDFで幅広く解説しました。</p>
+
+
+
+<p>本書だけで学ぶという書籍ではありませんが、他の書籍や動画講義、スクールなどで学んでいるときに、「この言葉が分からない」とか「この部分についてもっと理解したい」と思ったときに、本書を開いていただければと思います。</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://amzn.to/3wwNgKa" target="_blank" rel="noreferrer noopener">Webエンジニアを育てる学校</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/03/web_engineer_book/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>フロントエンド（Jamstack）開発で知っておきたいことば10選</title>
+		<link>https://tomosta.jp/2024/03/jamstack_word_10/</link>
+					<comments>https://tomosta.jp/2024/03/jamstack_word_10/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Fri, 01 Mar 2024 10:12:32 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24306</guid>
+
+					<description><![CDATA[Webサイト制作、特にフロントエンド開発の現場は流れが速く、次々に新しい技術・新しいことばが登場します。そこでこの記事では、そんなフロントエンド、特にJamstack開発をするに当たって、覚えておきたいことばを10個紹介していきましょう。]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="フロントエンド開発（Jamstack）で知っておきたいことば10選" width="500" height="281" src="https://www.youtube.com/embed/RuvHJpQgqms?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p>Webサイト制作、特にフロントエンド開発の現場は流れが速く、次々に新しい技術・新しいことばが登場します。そこでこの記事では、そんなフロントエンド、特にJamstack開発をするに当たって、覚えておきたいことばを10個紹介していきましょう。</p>
+
+
+
+<h2 class="wp-block-heading">Jamstack</h2>
+
+
+
+<p>まずはそもそも、Jamstackとはなんでしょう。これは、元々「JAMstack」と「JAM」の部分を大文字で表記することばでした。「JAM」は、「JavaScript」と「API」、「Markup」の頭文字を取ったことばで、stackは「積み重ねる」といった意味の英単語。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-1024x576.png" alt="" class="wp-image-24307" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>ちなみに「Markup」というのは、マークアップ言語のことで主にHTMLのことを指しているので、ここでは「HTMLとJavaScript、API（後述）という技術を積み重ねて、WebサイトやWebのアプリなどを開発する手法」のことを指します。</p>
+
+
+
+<p>近年では、特定の技術に縛られることなくモダンなフロントエンド開発環境をさして、一般的に「Jamstack」と呼ぶようになったため、表記も1つの単語として「Jamstack」と先頭だけ大文字にして表すことが多くなっています。</p>
+
+
+
+<h2 class="wp-block-heading">Node.js</h2>
+
+
+
+<p>フロントエンド、Jamstackの発展に欠かせなかったのが、Node.jsという存在です。近年のWeb開発には欠かせないアプリの1つと言えるでしょう。</p>
+
+
+
+<p>Node.jsを理解するには、まずは「JavaScript」というプログラミング言語について知る必要があります。JavaScriptというプログラミング言語は元々、Firefoxの前身と言える「Netscape Navigator」というWebブラウザ上で、簡単なスクリプトを動かすために作られたプログラミング言語でした。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-1-1024x576.png" alt="" class="wp-image-24308" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-1-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-1-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-1-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-1-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-1.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>このJavaScriptというプログラミング言語を、Webブラウザ以外の環境でも動作できるようにしたのが、Node.jsという実行環境です。これにより、JavaScriptで作成したプログラムをWebサーバー上や、自分のコンピュータ上でも動作させることができるようになったため、便利なアプリが続々と開発されています。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-2-1024x576.png" alt="" class="wp-image-24309" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-2-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-2-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-2-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-2-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-2.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<h2 class="wp-block-heading">npm</h2>
+
+
+
+<p>Node.js上で開発されたアプリは「パッケージ」と呼ばれ、これをインストール作業などをすることができます。このパッケージを管理するためのしくみが「npm」です。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-3-1024x576.png" alt="" class="wp-image-24310" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-3-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-3-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-3-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-3-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-3.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>Node Package Managerの略称で、同名のコマンドとWebサイトがあり、このサイトに掲載されているパッケージは簡単なコマンドでインストールすることができます。今、フロントエンド開発をするときにnpmを使ってパッケージを追加して開発するのは非常に一般的になりました。</p>
+
+
+
+<p>このおかげで、フロントエンドにさまざまな技術が登場して、技術の進化を促しています。</p>
+
+
+
+<h2 class="wp-block-heading">フレームワーク</h2>
+
+
+
+<p>今、フロントエンド開発をする場合はNext.jsやNuxt、Astro等の「フレームワーク」と呼ばれるものを導入することが多いでしょう。このフレームワークとは、元々「枠組み」とか「骨組み」といった意味のことばで、プログラミング開発においてよく使われる概念です。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-4-1024x576.png" alt="" class="wp-image-24311" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-4-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-4-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-4-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-4-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-4.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>プログラムを1から作るのではなく、骨組みとなるベースのプログラムを準備して、そこに肉付けをしながら全体を作り上げていきます。これによって、基本的なしくみをあらかじめ準備されたものを利用できたり、ファイル構成や命名規則など、開発におけるルールをフレームワークがあらかじめ定めているものをチームで採用できるなど、開発をスムーズに行うことができるようになります。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-5-1024x576.png" alt="" class="wp-image-24312" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-5-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-5-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-5-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-5-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-5.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<h2 class="wp-block-heading">コンポーネント</h2>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-6-1024x576.png" alt="" class="wp-image-24313" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-6-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-6-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-6-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-6-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-6.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>フレームワークを使った開発の時に重要な概念に「コンポーネント（Components）」があります。「成分」といった意味の英単語で、Webサイト内で使うパーツをファイルごとに分けて開発することができます。フレームワークによっては、コンポーネントごとにCSSやJavaScript等を分けることもでき、これまでのサイト制作では悩みの種であって、CSSが他の場所に悪影響を与えてしまうと言った被害を抑えることができます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-7-1024x576.png" alt="" class="wp-image-24314" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-7-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-7-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-7-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-7-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-7.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<h2 class="wp-block-heading">ルーティング・ダイナミックルーティング</h2>
+
+
+
+<p>フレームワークを使うもう一つの大きなメリットの1つが、URLを生成できる「ルーティング」というしくみです。</p>
+
+
+
+<p>通常Webサイト内にWebページを制作する場合、フォルダやファイルを、そのパス上に配置しなければなりません。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-8-1024x576.png" alt="" class="wp-image-24315" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-8-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-8-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-8-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-8-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-8.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>しかし、ルーティングというしくみを使えば、Webブラウザからのリクエストを、あるプログラムが一手に引き受けて、プログラムで処理した結果でWebページを生成することができます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-9-1024x576.png" alt="" class="wp-image-24316" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-9-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-9-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-9-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-9-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-9.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>ブログなどのように、記事の数がどんどん増えていくようなWebサイトの場合は、複数のアドレスをその場で生成できるダイナミックルーティングといったしくみも利用することができます。</p>
+
+
+
+<h2 class="wp-block-heading">ヘッドレスCMS</h2>
+
+
+
+<p>CMSはコンテンツ管理システムのことですが、通常のCMSは管理画面部分と表示画面部分がセットになっています。この表示画面部分を「ヘッド」と呼び、ヘッドレスCMSはこの表示画面部分がないCMSのことを言います。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-10-1024x576.png" alt="" class="wp-image-24317" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-10-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-10-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-10-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-10-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-10.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>そのため、入力したデータを表示したい場合は、JavaScript等のプログラミング言語を利用して、データを加工し、表示する必要があります。</p>
+
+
+
+<p>Jamstack開発の場合、逆に表示部分は作ることができるので、コンテンツの管理部分を、このヘッドレスCMSに任せることで、Webサイトなどのコンテンツを管理できるようにすることが多く、ヘッドレスCMS+Jamstackという開発が主流になっています。</p>
+
+
+
+<h2 class="wp-block-heading">API</h2>
+
+
+
+<p>APIは、Application Programming Interfaceの略称でプログラムとサービスなどの橋渡し（インターフェイス）となるしくみを指します。ヘッドレスCMSには、このAPIというものが備わっていて、例えば、JavaScriptでヘッドレスCMSで作成したコンテンツを取り出すときなどに、このAPIを通じてコンテンツを取り出すことになります。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-11-1024x576.png" alt="" class="wp-image-24318" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-11-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-11-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-11-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-11-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-11.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>Web上のサービスでのAPIの場合は、基本的には専用のURLが提示され、そのURLに固有の「APIキー」というキーと一緒にアクセスすることで、データを取り出すことができます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-12-1024x576.png" alt="" class="wp-image-24319" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-12-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-12-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-12-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-12-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-12.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>APIということば自体は、ソフトウェア開発などで非常に幅広く利用されることばであるため、Web上のAPIのことは特別に「Web API」などと呼ばれることもあります。</p>
+
+
+
+<h2 class="wp-block-heading">JSON</h2>
+
+
+
+<p>データ形式の種類の1つで、JavaScript Object Notationの略称。データを管理するためのデータ形式としてはこれまで、CSVやXMLといった形式がよく使われていました。が、CSVはデータの順番が入れ替わると何のデータなのか分からなくなってしまう等の問題点があり、XMLはタグが各データに入るため、データ容量が大きくなってしまうというデメリットがありました。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-13-1024x576.png" alt="" class="wp-image-24320" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-13-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-13-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-13-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-13-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-13.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>JSON形式はこれらを解消し、簡単な記述でデータをしっかり分類できることから、愛用されています。名前に、JavaScriptという名前があるとおり、当初はJavaScript用のデータ形式でしたが、現在ではその他にもさまざまな用途で利用されています。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-14-1024x576.png" alt="" class="wp-image-24321" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-14-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-14-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-14-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-14-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-14.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<h2 class="wp-block-heading">Ajax</h2>
+
+
+
+<p>通信方式の1つで、非同期通信と呼ばれる種類の通信方法。通常、Webサイトで使われる通信は同期通信と呼ばれ、データを受信している間は画面が真っ白になったり、操作不能になったりします。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-15-1024x576.png" alt="" class="wp-image-24323" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-15-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-15-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-15-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-15-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-15.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>逆に、画面上でなにか作業をしていたとしても、データの送信作業を行わなければ、サーバー側にデータは送信されません。しかし、非同期通信の場合は、サーバー側の処理とユーザーの操作を同時に（非同期で）行うことができるため、ストレスなく利用することができます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/03/image-16-1024x576.png" alt="" class="wp-image-24324" srcset="https://tomosta.jp/wp-content/uploads/2024/03/image-16-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/03/image-16-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/03/image-16-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/03/image-16-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/03/image-16.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>当初、このような非同期通信は「AJAX」ということばが使われていました。これは、「Asynchronous JavaScript And XML」の頭文字を取ったことばですが、その後JavaScriptやXMLを利用しない非同期通信にも利用されることばになり、「Ajax」と表記もかわりました。現在では、このことば自体があまり利用されることなく、単に「非同期通信」と呼ばれることの方が多いです。</p>
+
+
+
+<p>ということで、10選解説してみました。他にも、解説して欲しい言葉などありましたら、リクエストいただければ幸いです。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><a href="https://amzn.to/3wwNgKa" target="_blank" rel="noreferrer noopener"><img loading="lazy" decoding="async" width="570" height="200" src="https://tomosta.jp/wp-content/uploads/2024/03/web-engineer-school.png" alt="" class="wp-image-24326" srcset="https://tomosta.jp/wp-content/uploads/2024/03/web-engineer-school.png 570w, https://tomosta.jp/wp-content/uploads/2024/03/web-engineer-school-300x105.png 300w" sizes="(max-width: 570px) 100vw, 570px" /></a></figure></div>]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/03/jamstack_word_10/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>JavaScriptの繰り返し構文まとめ</title>
+		<link>https://tomosta.jp/2024/02/loop/</link>
+					<comments>https://tomosta.jp/2024/02/loop/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Thu, 01 Feb 2024 11:47:04 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<category><![CDATA[JavaScript]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24290</guid>
+
+					<description><![CDATA[JavaScriptの繰り返し構文、for、for of、for in、while、do whileについてそれぞれ紹介しましょう。]]></description>
+										<content:encoded><![CDATA[
+<p>JavaScriptには、何度も処理を繰り返す「繰り返し構文（またはループ構文）」として、次のようなものがあります。</p>
+
+
+
+<ul class="wp-block-list">
+<li>for</li>
+
+
+
+<li>for of</li>
+
+
+
+<li>for in</li>
+
+
+
+<li>while</li>
+
+
+
+<li>do while</li>
+</ul>
+
+
+
+<p>それぞれについて紹介しましょう。</p>
+
+
+
+<h2 class="wp-block-heading">for構文</h2>
+
+
+
+<p>繰り返し構文の基本となるもので、「何回繰り返す」といった決められた数を繰り返したいときによく使われます。次のような特殊な書式で記述されます。</p>
+
+
+
+<pre class="wp-block-code"><code>for (初期化処理; 繰り返し条件; 更新処理) {
+}</code></pre>
+
+
+
+<p>例えば、「10回繰り返す」というプログラムを作りたい場合、カウント用の変数を準備して0を代入しておき（初期化処理）、それを1ずつ加えながら（更新処理）、10になるまで（繰り返し条件）繰り返せば良いので、次のようになります。</p>
+
+
+
+<pre class="wp-block-code"><code>for (let i=0; i&lt;10; i++) {
+  console.log(i);
+}</code></pre>
+
+
+
+<p>なお、iというのは適当に準備した変数の名前で、他の「x」とか「count」とか何でもかまいません。ただ、繰り返し構文ではよくこの「i」というアルファベットが使われます（おそらく、indexのi）。</p>
+
+
+
+<p>また、更新処理の「i++」というのは「iという変数に1を加えて、iに再び代入する」という処理をするもので「インクリメント」と呼ばれます。これにより、iという変数が0から始まって1ずつ加えられながら10になるまで繰り返されて、画面に1から10までの数字が表示されます。</p>
+
+
+
+<h3 class="wp-block-heading">配列との組み合わせ</h3>
+
+
+
+<p>また、「配列」を使っている場合に、その内容を取り出すときにもよく使われます。</p>
+
+
+
+<pre class="wp-block-code"><code>const pref = &#91;
+  '北海道',
+  '青森県',
+  '岩手県'
+];
+
+for (let i=0; i&lt;pref.length; i++) {
+  console.log(pref&#91;i]);
+}</code></pre>
+
+
+
+<p>この場合、画面には配列の内容がすべて表示されます。iという変数に0を代入して1ずつ加えるのは変わりませんが、繰り返し条件が次のようになっています。</p>
+
+
+
+<pre class="wp-block-code"><code>i&lt;pref.length</code></pre>
+
+
+
+<p>「pref」という配列は「オブジェクト」と呼ばれるもので、「プロパティ」というものを持っているため、ここでは「length」という配列の長さ（=個数）を取得できるプロパティを使うことで「配列の内容全部」という意味を表すことができます。</p>
+
+
+
+<h2 class="wp-block-heading">for of構文</h2>
+
+
+
+<p>配列の内容を繰り返し構文で取得する場合は、先のfor構文を使うよりも「for of」構文を使う方が便利です。次のように利用できます。</p>
+
+
+
+<pre class="wp-block-code"><code>const pref = &#91;
+  '北海道',
+  '青森県',
+  '岩手県'
+];
+
+for (let name of pref) {
+  console.log(name);
+}</code></pre>
+
+
+
+<p>これでも同じように都道府県の名前を順番に表示できます。for of構文は次のような書式です。</p>
+
+
+
+<pre class="wp-block-code"><code>for (let 変数名 of 配列等) {
+}</code></pre>
+
+
+
+<p>これで、配列の内容を先頭から順番に取得して、すべて取り出されるまで繰り返すことができます。単純に配列の内容を取り出したいときは、こちらを使うと便利でしょう。</p>
+
+
+
+<h2 class="wp-block-heading">for in構文</h2>
+
+
+
+<p>for in構文は、for ofと同様に配列に対する繰り返し構文ですが、取り出されるのが値ではなく、配列の「インデックス」の方になります。そのため、この構文は配列の中でもインデックスを自由なキーワードにできる「連想配列」に対して利用されます。次のように連想配列を準備しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>const pref = {
+  "hokkaido": "北海道",
+  "aomori": "青森県",
+  "iwate": "岩手県"
+};</code></pre>
+
+
+
+<p>これを、for in構文で取り出します。</p>
+
+
+
+<pre class="wp-block-code"><code>for (let key in pref) {
+  console.log(key);
+}</code></pre>
+
+
+
+<p>すると、キーの「hokkaido」や「aomori」という値が取り出されます。もしここから、値を取り出したい場合はこのキーを使って配列から取り出します。</p>
+
+
+
+<pre class="wp-block-code"><code>for (let key in pref) {
+  console.log(pref&#91;key]);
+}</code></pre>
+
+
+
+<p>連想配列のキーも使いたい場合に利用されます。</p>
+
+
+
+<h2 class="wp-block-heading">while構文</h2>
+
+
+
+<p>while構文は、繰り返す回数が決まっていない場合や「繰り返すかどうか分からない」というプログラムに利用されます。</p>
+
+
+
+<p>例えば、「1ずつ順番に足していって、答えが10以上になったらやめる」というプログラムを作成したい場合、次のようなプログラムになります。</p>
+
+
+
+<pre class="wp-block-code"><code>let answer = 0;
+let i = 1;
+while (answer &lt; 10) {
+  answer += i;
+  console.log(answer);
+  i++;
+}
+</code></pre>
+
+
+
+<p>すると、画面には「1, 3, 6, 10」と表示されて繰り返しが終了します。1 + 2 + 3 + 4で10以上になったということで、4回繰り返されたことが分かります。このように、更新処理と繰り返しの条件が異なるときなどに利用されます。</p>
+
+
+
+<p>ただし、while構文とfor構文は、どちらを使っても表現することはでき、このプログラムもfor構文で書くこともできます。</p>
+
+
+
+<pre class="wp-block-code"><code>let answer = 0;
+for (let i=1; answer&lt;10; i++) {
+ answer += i;
+ console.log(answer);
+} </code></pre>
+
+
+
+<p>ただ、このようにfor構文の中に複数の変数名が入り込むのは、若干奇妙なプログラムに見えるため、この場合はwhile構文を使う方が適切かもしれません。</p>
+
+
+
+<h2 class="wp-block-heading">do while構文</h2>
+
+
+
+<p>while構文は、条件によっては「1回も実行されない」というケースがあります。例えば先の例でも、answerが最初から10より大きい場合は1度も実行されません。</p>
+
+
+
+<pre class="wp-block-code"><code>let answer = 10;
+let i = 1;
+while (answer &lt; 10) {
+  answer += i;
+  console.log(answer);
+  i++;
+}</code></pre>
+
+
+
+<p>しかし、これではプログラムが正しく動作しているのかどうか分からないかもしれません。このような場合に、「do while」構文を利用すると「少なくとも1回は実行される」繰り返し構文を書くことができます。次のように書き換えましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>let answer = 10;
+let i = 1;
+do {
+  answer += i;
+  console.log(answer);
+  i++;
+} while(answer&lt;10);</code></pre>
+
+
+
+<p>すると、「11」とだけ表示されてプログラムが終了します。最初の値である「10」に1を加えて画面に表示した後、10未満という条件が満たせなくなり、繰り返し構文が終了するというわけです。</p>
+
+
+
+<p>do while構文を利用するケースはかなりまれです。あまり使う機会はないでしょう。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/02/loop/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>TypeScriptを直接実行できる『ts-node』</title>
+		<link>https://tomosta.jp/2024/01/ts-node/</link>
+					<comments>https://tomosta.jp/2024/01/ts-node/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Tue, 30 Jan 2024 15:08:17 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<category><![CDATA[JavaScript]]></category>
+		<category><![CDATA[TypeScript]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24284</guid>
+
+					<description><![CDATA[JavaScriptでちょっとしたプログラムを作成した時、Node.jsを使って次のようにプログラムを動作させることができます。 しかしこの時、TypeScriptを使って開発をしたいと思った場合は、TypeScript [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>JavaScriptでちょっとしたプログラムを作成した時、Node.jsを使って次のようにプログラムを動作させることができます。</p>
+
+
+
+<pre class="wp-block-code"><code>node example.js</code></pre>
+
+
+
+<p>しかしこの時、TypeScriptを使って開発をしたいと思った場合は、TypeScriptをJavaScriptにコンパイルしてからでないと動作させることができません。しかし、「ts-node」というツールを利用すると直接実行することができます。</p>
+
+
+
+<h2 class="wp-block-heading">Node.js、TypeScriptをインストールしよう</h2>
+
+
+
+<p>まずは、Node.jsとTypeScriptはセットアップする必要があるので、まずはNode.jsを次のサイトからダウンロードしてセットアップしましょう。</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://nodejs.org/en" target="_blank" rel="noreferrer noopener">Node.js</a></li>
+</ul>
+
+
+
+<p>そしたら、ターミナルを起動して次のコマンドで、TypeScriptをインストールします。</p>
+
+
+
+<pre class="wp-block-code"><code>npm i -g typescript</code></pre>
+
+
+
+<p>この時、管理者権限でターミナルを起動するか、先頭に「sudo」を付加しておくと良いでしょう。これで、TypeScriptの開発環境ができました。</p>
+
+
+
+<h2 class="wp-block-heading">ts-nodeをインストールしよう</h2>
+
+
+
+<p>続いて、「ts-node」をインストールします。ターミナルから次のように入力しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>npm i ts-node</code></pre>
+
+
+
+<p>すると、「ts-node」というコマンドが利用できるようになります。これに、TypeScriptのソースプログラムを直接指定しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>ts-node example.ts</code></pre>
+
+
+
+<p>すると、TypeScriptのソースが直接実行されるようになり、開発が非常にスムーズになります。もちろん、実際にNode.jsで利用する場合には最後はコンパイル作業が必要になりますが、開発中などはこれを使うと便利でしょう。</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://www.npmjs.com/package/ts-node" target="_blank" rel="noreferrer noopener">ts-node</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/01/ts-node/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>JavaScriptで小数の計算の誤差を解決する『decimal.js』</title>
+		<link>https://tomosta.jp/2024/01/decimal-js/</link>
+					<comments>https://tomosta.jp/2024/01/decimal-js/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Tue, 30 Jan 2024 01:33:29 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24279</guid>
+
+					<description><![CDATA[JavaScriptに限らず、コンピュータは小数の計算が苦手です。例えば、次のプログラムを実行してみましょう。 100 × 1.1という計算なので、結果は「110」になるはずです。しかし、JavaScriptで実行すると [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>JavaScriptに限らず、コンピュータは小数の計算が苦手です。例えば、次のプログラムを実行してみましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>console.log(100 * 1.1);</code></pre>
+
+
+
+<p>100 × 1.1という計算なので、結果は「110」になるはずです。しかし、JavaScriptで実行すると次のように「110.000&#8230;1」などとおかしな数字になってしまいます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full is-resized"><img loading="lazy" decoding="async" width="350" height="72" src="https://tomosta.jp/wp-content/uploads/2024/01/image-13.png" alt="" class="wp-image-24280" style="width:164px;height:auto" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-13.png 350w, https://tomosta.jp/wp-content/uploads/2024/01/image-13-300x62.png 300w" sizes="(max-width: 350px) 100vw, 350px" /></figure></div>
+
+
+<p>これは、コンピュータが数字を2進数で扱っている関係で小数を扱うのが難しく、計算結果に誤差が生まれてしまうというもの。コンピュータで計算をする限りは、逃げることができない現象です。そこで、正しく計算を行えるライブラリを利用すると良いでしょう。</p>
+
+
+
+<p>ここでは『deciaml.js』の使い方を紹介しましょう。</p>
+
+
+
+<h2 class="wp-block-heading">decimal.jsをインストールしよう</h2>
+
+
+
+<p>decimal.jsは、次のGitHubで公開されているので、右上の「Code」ボタンをクリックして「Download ZIP」をクリックしてダウンロードします。</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1024" height="500" src="https://tomosta.jp/wp-content/uploads/2024/01/image-14-1024x500.png" alt="" class="wp-image-24281" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-14-1024x500.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-14-300x147.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-14-768x375.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-14-1536x751.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-14.png 1866w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure>
+
+
+
+<p>ソースファイルなどと合わせて「decimal.js」というファイルが見つかるので、これを自分のプログラムから参照できる場所にコピーしましょう。次のようにしてライブラリを組み込みます。</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;script src="decimal.js"&gt;&lt;/script&gt;</code></pre>
+
+
+
+<h2 class="wp-block-heading">Decimalオブジェクトを使おう</h2>
+
+
+
+<p>ライブラリを組み込むと、「Decimal」というオブジェクトが利用できるようになります。次のようにして、新しいインスタンスを準備しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>const tax = new Decimal('1.1');</code></pre>
+
+
+
+<p>ここで、カッコ内の「コンストラクタ」に「1.1」という数字を指定しているのですが、両端にシングルクオートがあることに注目しましょう。これは、「文字列」として、1.1という値を渡しています。というのは、ここで数字で渡してしまうと、この時点で誤差が出てしまう恐れがあるため、文字列として扱うことで誤差が生まれないようにしているのです。</p>
+
+
+
+<p>同じように計算する相手も作りましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>const tax = new Decimal('1.1');
+let price = new Decimal('100');</code></pre>
+
+
+
+<p>これで準備完了です。</p>
+
+
+
+<h2 class="wp-block-heading">かけ算をしよう</h2>
+
+
+
+<p>Decimalオブジェクトの場合、計算も普通に計算記号（算術演算子）を使って行うことはできず、すべてメソッドを通じて行います。かけ算をするには「times」メソッドを使いましょう。次のようにします。</p>
+
+
+
+<pre class="wp-block-code"><code>let tax_in = price.times(tax).toNumber();</code></pre>
+
+
+
+<p>計算結果は「toNumber」メソッドで数字に変換します。これで、計算結果を通常の数字として扱うことができるようになりました。後は、画面に表示すれば完成です。全体のプログラムを確認しましょう。</p>
+
+
+
+<pre class="wp-block-code"><code>&lt;script src="decimal.js">&lt;/script>
+&lt;script>
+    const tax = new Decimal('1.1');
+    let price = new Decimal('100');
+
+    //計算したい値をパラメータとして渡し、「times」で掛け算、「toNumber()」で計算結果を数字に変換
+    let tax_in = price.times(tax).toNumber();
+    console.log(tax_in);
+&lt;/script></code></pre>
+
+
+
+<p>これで、画面には正しく「110」と表示されます。小数を扱うときには、誤差に注意して計算しましょう。なお、decimal.jsにはこの他にも数学の計算が行えるような、さまざまなメソッドが準備されています。ドキュメントを参照して利用すると良いでしょう。</p>
+
+
+
+<ul class="wp-block-list">
+<li><a href="https://mikemcl.github.io/decimal.js/" target="_blank" rel="noreferrer noopener">decimal.js</a></li>
+</ul>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/01/decimal-js/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>TypeScriptで「ブロック スコープの変数を再宣言することはできません。」と言われたら</title>
+		<link>https://tomosta.jp/2024/01/ts-block-scope-error/</link>
+					<comments>https://tomosta.jp/2024/01/ts-block-scope-error/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Sun, 28 Jan 2024 02:10:27 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<category><![CDATA[JavaScript]]></category>
+		<category><![CDATA[TypeScript]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24277</guid>
+
+					<description><![CDATA[Visual Studio Codeで、TypeScriptを使って開発しているとき、変数名のところに「ブロックスコープの変数 &#8216;tax&#8217; を再宣言することはできません。」というエラーが発生するこ [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<p>Visual Studio Codeで、TypeScriptを使って開発しているとき、変数名のところに「ブロックスコープの変数 &#8216;tax&#8217; を再宣言することはできません。」というエラーが発生することがあります。</p>
+
+
+
+<p>これは、同じプロジェクト内で同じ変数名を使って宣言した場合に発生するもので、実際に1プロジェクトとして開発している場合には適切なエラーメッセージなため、ブロックを分けたり変数名を変更したり、モジュールにするなどで解決する必要があります。</p>
+
+
+
+<p>ただ、単に練習のプログラムを作っていてファイルを分けただけだったり、別々のプログラムの中で反応してしまうということがあり、邪魔に感じることがあります。そんな場合は、「tsconfig.json」でこのチェックを止めることができます。</p>
+
+
+
+<h2 class="wp-block-heading">tsconfig.jsonを作ろう</h2>
+
+
+
+<p>もしまだ、tsconfig.jsonがない場合は次のコマンドでフォルダ内にtsconfig.jsonを作成します。</p>
+
+
+
+<pre class="wp-block-code"><code>tsc init</code></pre>
+
+
+
+<p>すると、フォルダ内にtsconfig.jsonファイルができあがります。</p>
+
+
+
+<h2 class="wp-block-heading">moduleDetectionオプションを変更しよう</h2>
+
+
+
+<p>次に、このtsconfig.jsonファイルをエディタで開き、「moduleDetection」という記述を探します（25行目付近）。</p>
+
+
+
+<pre class="wp-block-code"><code>    // "moduleDetection": "auto",                        /* Control what method is used to detect module-format JS files. */</code></pre>
+
+
+
+<p>最初は行の先頭に「//」が記述されていて、コメントになっているため、これを取り除きましょう。標準ではこの設定が「auto」になっています。これにより、モジュール単位での変数宣言などをチェックしてくれるようになるため、変数名の重複などが指摘されるようになるのです。</p>
+
+
+
+<p>そこでこれを「force」として強制にします。すると、すべてのファイルをモジュールと見なしてくれるため、別のファイルに同じ変数名があっても問題ないと判定されます。</p>
+
+
+
+<pre class="wp-block-code"><code>"moduleDetection": "force",                        /* Control what method is used to detect module-format JS files. */</code></pre>
+
+
+
+<p>これで保存すれば、警告を消すことができます。</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/01/ts-block-scope-error/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+		<item>
+		<title>Visual Studio Codeをインストールしよう</title>
+		<link>https://tomosta.jp/2024/01/install-vscode/</link>
+					<comments>https://tomosta.jp/2024/01/install-vscode/#respond</comments>
+		
+		<dc:creator><![CDATA[ともすた]]></dc:creator>
+		<pubDate>Wed, 24 Jan 2024 02:15:26 +0000</pubDate>
+				<category><![CDATA[ともすたmedia]]></category>
+		<guid isPermaLink="false">https://tomosta.jp/?p=24263</guid>
+
+					<description><![CDATA[Visual Studio CodeはMicrosoftが開発する無償の開発用エディタソフトです。 Web制作や、プログラミング開発に非常に役立つエディタなので、是非インストールして学習などに役立てましょう。 ダウンロー [&#8230;]]]></description>
+										<content:encoded><![CDATA[
+<div style="position: relative; padding-top: 56.25%;">
+  <iframe
+    src="https://customer-djyl72dmsv6hsad6.cloudflarestream.com/a104a001bca81cf5531567014bc3f0e4/iframe?preload=true&#038;defaultTextTrack=ja&#038;poster=https%3A%2F%2Fcustomer-djyl72dmsv6hsad6.cloudflarestream.com%2Fa104a001bca81cf5531567014bc3f0e4%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D%26height%3D600"
+    style="border: none; position: absolute; top: 0; left: 0; height: 100%; width: 100%;"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen="true"
+  ></iframe>
+</div>
+
+
+
+<p>Visual Studio CodeはMicrosoftが開発する無償の開発用エディタソフトです。</p>
+
+
+
+<p>Web制作や、プログラミング開発に非常に役立つエディタなので、是非インストールして学習などに役立てましょう。</p>
+
+
+
+<h2 class="wp-block-heading">ダウンロードしよう</h2>
+
+
+
+<p>まずは、Googleなどで「vscode」などで検索をして、<a href="https://code.visualstudio.com/">こちら</a>のサイトにアクセスします。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-4-1024x576.png" alt="" class="wp-image-24266" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-4-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-4-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-4-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-4-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-4.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>アクセスした環境に合わせたダウンロードボタンが表示されるので、これをクリックしましょう。</p>
+
+
+
+<p>macOSの場合は、ZIPファイルを展開するとアプリケーションアイコンが現れるので、これをアプリケーションフォルダにドラッグ。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-5-1024x576.png" alt="" class="wp-image-24267" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-5-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-5-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-5-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-5-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-5.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>Windowsの場合はセットアッププログラムを起動して、指示に従ってセットアップしていきます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-6-1024x576.png" alt="" class="wp-image-24268" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-6-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-6-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-6-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-6-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-6.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>Launchpadやスタートボタンから起動しましょう。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-7-1024x576.png" alt="" class="wp-image-24269" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-7-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-7-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-7-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-7-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-7.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<h2 class="wp-block-heading">日本語化しよう</h2>
+
+
+
+<p>起動すると最初は英語表記で起動してしまいます。これを日本語化するには「拡張機能」が必要です。</p>
+
+
+
+<p>初回起動時には右下にヘルプが出ますが、</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-8-1024x576.png" alt="" class="wp-image-24270" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-8-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-8-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-8-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-8-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-8.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>見逃した場合などは、左側の「Extensions」をクリックして、検索窓で「Japanese」などと検索します。日本語化の拡張機能がヒットするので「Install」をクリックしてインストールしましょう。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-9-1024x576.png" alt="" class="wp-image-24271" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-9-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-9-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-9-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-9-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-9.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>再起動を促されるので再起動すれば、次からは日本語で表示されます。</p>
+
+
+
+<h2 class="wp-block-heading">設定を変更しよう</h2>
+
+
+
+<p>後は、設定などを好みに合わせて変更していきましょう。</p>
+
+
+
+<p>例えば標準ではウィンドウの色などが黒いダークテーマですが、明るいテーマが好きな場合は、左下の「管理」ボタンから「テーマ→配色テーマ」メニューを選ぶと、テーマの一覧が表示されます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-10-1024x576.png" alt="" class="wp-image-24272" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-10-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-10-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-10-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-10-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-10.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>私は「Solarized Light」などが好きです。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-11-1024x576.png" alt="" class="wp-image-24273" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-11-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-11-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-11-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-11-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-11.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>また、「アカウント」ボタンをクリックすると、複数の環境にインストールしたVisual Studio Codeの設定などを、同期することもできます。</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-large"><img loading="lazy" decoding="async" width="1024" height="576" src="https://tomosta.jp/wp-content/uploads/2024/01/image-12-1024x576.png" alt="" class="wp-image-24274" srcset="https://tomosta.jp/wp-content/uploads/2024/01/image-12-1024x576.png 1024w, https://tomosta.jp/wp-content/uploads/2024/01/image-12-300x169.png 300w, https://tomosta.jp/wp-content/uploads/2024/01/image-12-768x432.png 768w, https://tomosta.jp/wp-content/uploads/2024/01/image-12-1536x864.png 1536w, https://tomosta.jp/wp-content/uploads/2024/01/image-12.png 1920w" sizes="(max-width: 1024px) 100vw, 1024px" /></figure></div>
+
+
+<p>Microsoftアカウントか、GitHubアカウントでログインできるので、お使いのアカウントで各環境からログインしましょう。</p>
+
+
+
+<p>これで、使う準備は完了です活用していきましょう</p>
+]]></content:encoded>
+					
+					<wfw:commentRss>https://tomosta.jp/2024/01/install-vscode/feed/</wfw:commentRss>
+			<slash:comments>0</slash:comments>
+		
+		
+			</item>
+	</channel>
+</rss>
